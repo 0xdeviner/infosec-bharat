@@ -1,0 +1,81 @@
+name: Validate event submission (issue)
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract events YAML from issue body
+        id: extract
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || "";
+            // Try to find the first fenced code block (```yaml ... ``` or ``` ... ```)
+            const m = body.match(/```(?:yaml)?\s*([\s\S]*?)\s*```/i);
+            if (!m) {
+              core.setFailed("Could not find a fenced code block with YAML in the issue body.");
+              return;
+            }
+            const yamlText = m[1].trim();
+            core.setOutput('yaml', yamlText);
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install deps
+        run: pip install pyyaml
+
+      - name: Validate
+        id: validate
+        run: |
+          python scripts/validate_events.py --string "${{ steps.extract.outputs.yaml }}" --json > validation.json || true
+          cat validation.json
+
+      - name: Comment result + label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const result = JSON.parse(fs.readFileSync('validation.json', 'utf8'));
+            const issue_number = context.payload.issue.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Clean up old labels
+            const desiredRemove = ['invalid', 'validated'];
+            for (const name of desiredRemove) {
+              try {
+                await github.rest.issues.removeLabel({ owner, repo, issue_number, name });
+              } catch (e) {
+                // ignore
+              }
+            }
+
+            let body;
+            let addLabel;
+            const hasEvents = (result.eventCount || 0) > 0;
+            if (result.valid && hasEvents) {
+              addLabel = 'validated';
+              body = `✅ **Validation passed** (${result.eventCount} event(s)).\n\nA maintainer can approve this submission by commenting **✅** or **/approve**.`;
+            } else {
+              addLabel = 'invalid';
+              const errs = (result.errors || []).slice();
+              if (result.valid && !hasEvents) errs.push('YAML must contain at least 1 event under `events:`');
+              const formatted = errs.map(e => `- ${e}`).join('\n');
+              body = `❌ **Validation failed**. Please fix the following and edit the issue to re-run validation:\n\n${formatted}`;
+            }
+
+            await github.rest.issues.addLabels({ owner, repo, issue_number, labels: [addLabel] });
+            await github.rest.issues.createComment({ owner, repo, issue_number, body });

@@ -1,0 +1,125 @@
+name: Create PR from approved event submission
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create_pr:
+    if: github.event.issue.pull_request == null
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check approval + fetch YAML
+        id: gate
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comment = context.payload.comment;
+            const issue = context.payload.issue;
+
+            const body = (comment.body || '').trim();
+            const approved = body.includes('✅') || /^\/approve\b/m.test(body);
+            if (!approved) {
+              core.setOutput('run', 'false');
+              return;
+            }
+
+            // Only allow maintainers/org members (OWNER/MEMBER/COLLABORATOR)
+            const assoc = comment.author_association;
+            const allowed = ['OWNER', 'MEMBER', 'COLLABORATOR'];
+            if (!allowed.includes(assoc)) {
+              core.setFailed(`Approval comment author_association=${assoc} is not allowed.`);
+              return;
+            }
+
+            // Ensure issue is validated
+            const labels = (issue.labels || []).map(l => (typeof l === 'string' ? l : l.name));
+            if (!labels.includes('validated')) {
+              core.setFailed('Issue is not validated. Please ensure the issue has the validated label first.');
+              return;
+            }
+
+            // Extract YAML from issue body
+            const ibody = issue.body || '';
+            const m = ibody.match(/```(?:yaml)?\s*([\s\S]*?)\s*```/i);
+            if (!m) {
+              core.setFailed('Could not find a fenced code block with YAML in the issue body.');
+              return;
+            }
+
+            core.setOutput('run', 'true');
+            core.setOutput('yaml', m[1].trim());
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.run == 'true'
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install deps
+        if: steps.gate.outputs.run == 'true'
+        run: pip install pyyaml
+
+      - name: Write submission YAML
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          cat > submission.yaml <<'YAML'
+          ${{ steps.gate.outputs.yaml }}
+          YAML
+
+      - name: Validate submission
+        if: steps.gate.outputs.run == 'true'
+        run: python scripts/validate_events.py --file submission.yaml
+
+      - name: Merge into events.yaml
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          python scripts/merge_events.py --base events.yaml --add submission.yaml --out events.yaml
+          python scripts/validate_events.py --file events.yaml
+
+      - name: Create PR
+        if: steps.gate.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          ISSUE_NUMBER=${{ github.event.issue.number }}
+          BRANCH="event-submission/issue-${ISSUE_NUMBER}"
+
+          git config user.name "infosec-bharat-bot"
+          git config user.email "actions@users.noreply.github.com"
+
+          git checkout -b "$BRANCH"
+          git add events.yaml
+          git commit -m "Add events from issue #${ISSUE_NUMBER}"
+          git push --set-upstream origin "$BRANCH"
+
+          # Create PR using GitHub API via gh (available on runners)
+          gh pr create \
+            --title "Add events from issue #${ISSUE_NUMBER}" \
+            --body "Auto-generated from issue #${ISSUE_NUMBER}." \
+            --base main \
+            --head "$BRANCH"
+
+      - name: Comment back on issue
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issue_number = context.payload.issue.number;
+            await github.rest.issues.createComment({
+              owner, repo, issue_number,
+              body: `✅ PR created for this submission. Please review and merge.`
+            });

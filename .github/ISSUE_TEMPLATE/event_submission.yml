@@ -1,0 +1,58 @@
+name: "📅 Submit an InfoSec Bharat Event"
+description: "Submit one (or many) events. Paste YAML following the repo template; automation will validate and open a PR after maintainer approval."
+title: "[Event Submission]: <event name>"
+labels:
+  - event-submission
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting an event to **InfoSec Bharat**.
+
+        **How it works**
+        1) You paste YAML (one or more events) in the template format.
+        2) Automation validates it and posts feedback.
+        3) A maintainer approves with a comment (`✅` or `/approve`).
+        4) Automation opens a PR that updates `events.yaml`.
+
+        **Template:** https://github.com/0xdeviner/infosec-bharat/blob/main/events_template.yaml
+
+  - type: textarea
+    id: events_yaml
+    attributes:
+      label: "Events YAML"
+      description: "Paste YAML containing an `events:` list (one or more events). Remove optional fields entirely if not applicable."
+      render: yaml
+      placeholder: |
+        events:
+          - name: "EXAMPLE SECEXPO 2026"
+            description: "Describe your event..."
+            start_date: "2026-04-12"
+            end_date: "2026-04-13"
+            location: "Grand Hyatt, Bangalore"
+            city: "Bangalore"
+            category: "Conference"
+            event_type: "offline"
+            website_url: "https://example.in"
+            organizer_name: "Your Name"
+            organizer_email: "you@example.com"
+            # Optional:
+            # event_socials: "https://x.com/example"
+            # is_paid: true
+            # price_min: 1000
+            # price_max: 5000
+            # cfp_deadline: "2026-03-30"
+            # tags:
+            #   - AppSec
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: "Confirmations"
+      options:
+        - label: "I confirm this information is accurate to the best of my knowledge."
+          required: true
+        - label: "I confirm I removed optional fields that do not apply (instead of leaving them blank)."
+          required: true
