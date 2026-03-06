@@ -102,7 +102,9 @@ jobs:
           git checkout -b "$BRANCH"
           git add events.yaml
           git commit -m "Add events from issue #${ISSUE_NUMBER}"
-          git push --set-upstream origin "$BRANCH"
+          # Branch may already exist if the workflow was re-run.
+          # Force-with-lease keeps this idempotent while still protecting against unexpected remote updates.
+          git push --force-with-lease --set-upstream origin "$BRANCH"
 
           # Create PR using GitHub API via gh (available on runners)
           gh pr create \
