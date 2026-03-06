@@ -1,1 +1,25 @@
-events: []
+events:
+- name: VULNCON 2026
+  description: Vulncon Security Conference is India's fastest-growing security conference.
+  start_date: '2026-06-12'
+  end_date: '2026-06-13'
+  location: NIMHANS Convention Centre
+  city: Bangalore
+  category: Conference
+  event_type: offline
+  website_url: https://vulncon.in
+  event_socials: https://x.com/vulncon
+  is_paid: true
+  price_min: 2999
+  price_max: 6999
+  cfp_deadline: '2026-04-25'
+  organizer_name: Hitesh Patra
+  organizer_email: hitesh@vulncon.in
+  tags:
+  - Research
+  - CXO Panels
+  - Offensive Security
+  - Tech Talks
+  - Workshops
+  - Villages
+  - Tools
