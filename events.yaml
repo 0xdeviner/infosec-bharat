@@ -450,39 +450,7 @@ events:
       - Training
       - CTF
 
-  - name: "CIACON 2026"
-    description: "Hacker-style conference featuring hands-on sessions, CTFs, and hardware hacking (dates/venue TBD)."
-    start_date: "TBD"
-    end_date: "TBD"
-    location: "TBD"
-    city: "Delhi"
-    category: "Conference"
-    event_type: "hybrid"
-    website_url: "https://ciaconference.com"
-    is_paid: true
-    organizer_name: "CIA Conference"
-    organizer_email: "contact@ciaconference.com"
-    tags:
-      - Conference
-      - CTF
-      - Hardware Hacking
-
-  - name: "GITEX AI INDIA 2027"
-    description: "Large AI and deep-tech conference in India focused on innovation and ecosystem building (details TBD)."
-    start_date: "TBD"
-    end_date: "TBD"
-    location: "Bengaluru"
-    city: "Bangalore"
-    category: "Conference"
-    event_type: "offline"
-    website_url: "https://www.gitex-india.com/"
-    is_paid: false
-    organizer_name: "Dubai World Trade Centre & KAOUN International"
-    organizer_email: "info@gitex.com"
-    tags:
-      - Conference
-      - AI
-      - Innovation
+  # NOTE: CIACON and GITEX AI INDIA were omitted because the validator requires YYYY-MM-DD dates.
 
   - name: "Nullcon Goa 2026"
     description: "Hacker-first security conference with trainings, talks, and CTFs."
