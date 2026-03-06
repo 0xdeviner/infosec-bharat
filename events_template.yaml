@@ -1,0 +1,27 @@
+# InfoSec Bharat Event Submission Template
+# Copy this template and fill in your event details
+# Submit via PR to: https://github.com/0xdeviner/infosec-bharat
+
+events:
+  - name: "EXAMPLE SECEXPO 2026" # Event Name (required)
+    description: "Describe your event..." # Event Description (required)
+    start_date: "2026-04-12"  # YYYY-MM-DD format (required)
+    end_date: "2026-04-13" # YYYY-MM-DD format (required)
+    location: "Grand Hyatt, Bangalore" # Venue/Location (required)
+    city: "Bangalore"  # Bangalore, Mumbai, Delhi, Hyderabad, Online, etc (required)
+    category: "Conference" # Conference, Meetup (required)
+    event_type: "offline"  # offline, online, hybrid (required)
+    website_url: "https://example.in" # Website (required)
+    event_socials: "https://x.com/example" # Social Handle (optional)
+    is_paid: true # Event is paid or free (optional)
+    price_min: 1000  # INR, remove if free (optional)
+    price_max: 5000  # INR, remove if free (optional)
+    cfp_deadline: "2026-03-30"  # Optional, remove if no CFP (optional)
+    organizer_name: "Hitesh Patra" # Submitted By (required)
+    organizer_email: "hello@infosecbharat.com" # Submitted By (required)
+    tags:         # Event tags (optional)
+      - Conference
+      - AppSec
+      - Workshop
+
+  # Add more events below following the same format
