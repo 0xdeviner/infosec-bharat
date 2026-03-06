@@ -65,11 +65,14 @@ Create an `events.yaml` file on your machine and copy the template above into it
 
 ## Approval Process
 
-Once your PR is submitted, our AI Agent Nakul handles the rest.
-- Nakul will send a notification to the maintainer regarding the PR.
-- Maintainers will review the submission. 
-- Once the maintainers approve, PR will be merged and event will be listed on InfoSec Bharat.
-- You will be notified once they are live!
+There are two supported submission paths:
+
+1) **Direct PR (bulk submissions):** you create/update `events.yaml` in a PR.
+2) **Issue Form (recommended for most people):** you open the **“Submit an InfoSec Bharat Event”** issue and paste YAML; automation validates it and opens a PR after maintainer approval.
+
+**Maintainer approval:** comment **✅** (or `/approve`) on the issue/PR to proceed.
+
+After approval and merge, the event will be listed on InfoSec Bharat.
 
 > [!TIP]
 > Bulk submitting events for an entire community or series of monthly meetups? Using the YAML GitOps method will save you and the maintainers significant time compared to individual UI submissions.

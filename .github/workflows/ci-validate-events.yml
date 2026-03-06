@@ -1,0 +1,26 @@
+name: Validate events.yaml
+
+on:
+  push:
+    paths:
+      - events.yaml
+      - scripts/**
+      - .github/workflows/ci-validate-events.yml
+  pull_request:
+    paths:
+      - events.yaml
+      - scripts/**
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - run: pip install pyyaml
+      - run: python scripts/validate_events.py --file events.yaml
