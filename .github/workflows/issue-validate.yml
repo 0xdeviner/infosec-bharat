@@ -27,7 +27,9 @@ jobs:
               return;
             }
             const yamlText = m[1].trim();
-            core.setOutput('yaml', yamlText);
+            // Avoid shell-quoting issues by base64-encoding the YAML.
+            const yamlB64 = Buffer.from(yamlText, 'utf8').toString('base64');
+            core.setOutput('yaml_b64', yamlB64);
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -40,7 +42,8 @@ jobs:
       - name: Validate
         id: validate
         run: |
-          python scripts/validate_events.py --string "${{ steps.extract.outputs.yaml }}" --json > validation.json || true
+          echo "${{ steps.extract.outputs.yaml_b64 }}" | base64 -d > submission.yaml
+          python scripts/validate_events.py --file submission.yaml --json > validation.json || true
           cat validation.json
 
       - name: Comment result + label
