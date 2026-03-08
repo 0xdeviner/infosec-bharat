@@ -39,25 +39,6 @@ events:
       - Training
       - AppSec
 
-  - name: "International Conference on Advances in Cyber Security and Ethical Hacking (ICACSEH) 2026"
-    description: "Academic conference for research presentations in cybersecurity and ethical hacking."
-    start_date: "2026-03-13"
-    end_date: "2026-03-13"
-    location: "New Prince Shri Bhavani College Of Engineering And Technology"
-    city: "Chennai"
-    category: "Conference"
-    event_type: "hybrid"
-    website_url: "https://docs.google.com/forms/d/e/1FAIpQLSdJiPGRWMewxdHHUn5GU6ZpMllQCNUPzn1U6p1Blebl0M0wjg/viewform"
-    is_paid: true
-    price_min: 500
-    price_max: 3000
-    organizer_name: "New Prince Shri Bhavani College"
-    organizer_email: "info@newprinceshribhavani.com"
-    tags:
-      - Conference
-      - Academic
-      - Call for Papers
-
   - name: "ETCISO SecuFest 2026"
     description: "Invite-only residential summit for CISOs and security leaders with masterclasses and peer networking."
     start_date: "2026-03-12"
