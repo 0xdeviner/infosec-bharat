@@ -9,8 +9,8 @@ events:
     event_type: "offline"
     website_url: "https://www.gartner.com/en/conferences/apac/security-risk-management-india"
     is_paid: true
-    organizer_name: "InfoSec Bharat"
-    organizer_email: "hello@infosecbharat.com"
+    organizer_name: "Gartner"
+    organizer_email: "india.registration@gartner.com"
     tags:
       - Conference
       - Leadership
