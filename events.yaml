@@ -243,6 +243,27 @@ events:
   - Leadership
   - Executive
   - Enterprise Security
+- name: AI - SEC Community Monthly Meetup | Bengaluru Chapter - March 2026
+  description: Join us for our March 2026 AI - SEC Community Monthly Meetup in Bengaluru,
+    where Top Cybersecurity Professionals and AI Exper
+  start_date: '2026-03-28'
+  end_date: '2026-03-28'
+  location: 'lastminute.com Address: TOWER-B, 5th Floor, MANTRI COMMERCIO, Marathahalli
+    - Sarjapur Outer Ring Rd, Kariyammana Agrahara, Bellandur, Bengaluru, Karnataka
+    560103'
+  city: Bangalore
+  category: Meetup
+  event_type: offline
+  website_url: https://luma.com/romrt1ua
+  organizer_name: Micheal Joshuva
+  organizer_email: michealjoshuva@gmail.com
+  is_paid: false
+  event_socials: https://www.linkedin.com/company/ai-sec-community/
+  tags:
+  - Meetup
+  - AI Security
+  - Free Entry
+  - Tech Talks
 - name: BSides Mussoorie 2026
   description: Community security conference with talks, workshops, and CTF.
   start_date: '2026-04-06'
