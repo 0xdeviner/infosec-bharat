@@ -108,6 +108,25 @@ events:
   - Conference
   - Enterprise Security
   - Data Security
+- name: ISACA Cochin - One Day Conference
+  description: One-day ISACA chapter conference on governance, audit, and security
+    practices.
+  start_date: '2026-02-28'
+  end_date: '2026-02-28'
+  location: PGS Vedanta
+  city: Kochi
+  category: Conference
+  event_type: offline
+  website_url: https://engage.isaca.org/cochinchapter
+  is_paid: true
+  price_min: 750
+  price_max: 1000
+  organizer_name: ISACA Cochin Chapter
+  organizer_email: info@isacacochin.org
+  tags:
+  - Conference
+  - Governance
+  - Audit
 - name: Nullcon Goa 2026
   description: Hacker-first security conference with trainings, talks, and CTFs.
   start_date: '2026-02-28'
@@ -130,25 +149,6 @@ events:
   - Training
   - CTF
   - Research
-- name: ISACA Cochin - One Day Conference
-  description: One-day ISACA chapter conference on governance, audit, and security
-    practices.
-  start_date: '2026-02-28'
-  end_date: '2026-02-28'
-  location: PGS Vedanta
-  city: Kochi
-  category: Conference
-  event_type: offline
-  website_url: https://engage.isaca.org/cochinchapter
-  is_paid: true
-  price_min: 750
-  price_max: 1000
-  organizer_name: ISACA Cochin Chapter
-  organizer_email: info@isacacochin.org
-  tags:
-  - Conference
-  - Governance
-  - Audit
 - name: National Cyber Security Conference 2026
   description: Conference for security professionals covering enterprise security,
     policy, and emerging threats.
@@ -336,6 +336,23 @@ events:
   - Conference
   - Expo
   - Enterprise Security
+- name: GovSec 2026
+  description: India's first dedicated conference to bring together diverse stakeholders
+    from Government to deliberate on evolving cyber security paradigms.
+  start_date: '2026-04-23'
+  end_date: '2026-04-23'
+  location: Taj Palace
+  city: Delhi
+  category: Conference
+  event_type: offline
+  website_url: https://www.dsci.in/events/content/govsec-2026
+  is_paid: false
+  organizer_name: Data Security Council of India (DSCI)
+  organizer_email: hemang.prakhar@dsci.in
+  tags:
+  - Government
+  - Enterprise Security
+  - Zero Trust
 - name: ISMG Cybersecurity Week India 2026 - New Delhi
   description: Security leadership summit focused on AI-driven resilience and DPDP
     readiness.
@@ -394,6 +411,44 @@ events:
   - Community
   - Workshop
   - CTF
+- name: National Cyber Security Conference 2026 - Mumbai Edition
+  description: Convenes top leaders from government, industry, and PSUs to address
+    pressing cybersecurity challenges and promote multi-stakeholder collaboration.
+  start_date: '2026-05-14'
+  end_date: '2026-05-14'
+  location: Novotel - Mumbai International Airport
+  city: Mumbai
+  category: Conference
+  event_type: offline
+  website_url: https://ncsrc.in/mumbai_event/index.html
+  is_paid: true
+  price_min: 7500
+  price_max: 7500
+  organizer_name: National Cyber Security Research Council (NCSRC)
+  organizer_email: info@ncsrc.in
+  tags:
+  - Policy
+  - Enterprise Security
+  - Cyber Resilience
+- name: Surakshit Bharat 2026
+  description: Global Summit, Exhibition & Awards on Homeland Security advancing India's
+    collective preparedness across Defence, Aerospace, and Cybersecurity.
+  start_date: '2026-05-21'
+  end_date: '2026-05-22'
+  location: Vigyan Bhawan
+  city: Ahmedabad
+  category: Conference
+  event_type: offline
+  website_url: https://surakshit-bharat.org
+  is_paid: true
+  price_min: 3000
+  price_max: 10000
+  organizer_name: SwaRaksha Mahotsav
+  organizer_email: dg@tpcgsi.com
+  tags:
+  - Homeland Security
+  - Cybersecurity
+  - Defence
 - name: DSCI FINSEC Conclave 2026
   description: DSCI conclave focused on cybersecurity and data privacy challenges
     in BFSI.
@@ -432,6 +487,23 @@ events:
   - BSides
   - Community
   - CTF
+- name: ACM ASIACCS 2026 - ACM ASIA Conference on Computer and Communications Security
+  description: ACM SIGSAC conference for academic and industry research in computer
+    and communications security.
+  start_date: '2026-06-01'
+  end_date: '2026-06-05'
+  location: The Chancery Pavilion
+  city: Bangalore
+  category: Conference
+  event_type: offline
+  website_url: https://asiaccs2026.cse.iitkgp.ac.in/
+  is_paid: true
+  organizer_name: ACM SIGSAC / IIT Kharagpur
+  organizer_email: asiaccs2026@iitkgp.ac.in
+  tags:
+  - Conference
+  - Academic
+  - Research
 - name: Gartner IT Infrastructure, Operations & Cloud Strategies Conference Mumbai
     2026
   description: Gartner conference for IT ops and cloud leaders on infrastructure,
@@ -451,23 +523,6 @@ events:
   - Cloud
   - DevSecOps
   - Leadership
-- name: ACM ASIACCS 2026 - ACM ASIA Conference on Computer and Communications Security
-  description: ACM SIGSAC conference for academic and industry research in computer
-    and communications security.
-  start_date: '2026-06-01'
-  end_date: '2026-06-05'
-  location: The Chancery Pavilion
-  city: Bangalore
-  category: Conference
-  event_type: offline
-  website_url: https://asiaccs2026.cse.iitkgp.ac.in/
-  is_paid: true
-  organizer_name: ACM SIGSAC / IIT Kharagpur
-  organizer_email: asiaccs2026@iitkgp.ac.in
-  tags:
-  - Conference
-  - Academic
-  - Research
 - name: VULNCON 2026
   description: India’s technical security conference focused on offensive security
     and applied research.
@@ -548,6 +603,41 @@ events:
   - BSides
   - Community
   - Conference
+- name: SANS Cyber Defence South Asia 2026
+  description: Live online training providing actionable insights, defensive architecture
+    design, and zero trust strategy implementation. Courses priced individually in
+    USD starting at $8,900.
+  start_date: '2026-07-20'
+  end_date: '2026-07-25'
+  location: Online
+  city: Online
+  category: Conference
+  event_type: online
+  website_url: https://www.sans.org/cyber-security-training-events/cyber-defence-south-asia-2026
+  is_paid: true
+  organizer_name: SANS Institute
+  organizer_email: india@sans.org
+  tags:
+  - Cyber Defense
+  - Incident Response
+  - Training
+- name: Cyber Revolution Summit | India 2026
+  description: High-impact platform exploring next-generation cyber security tech
+    and integrated network security frameworks for India's digital economy.
+  start_date: '2026-07-24'
+  end_date: '2026-07-24'
+  location: Delhi
+  city: Delhi
+  category: Conference
+  event_type: offline
+  website_url: https://cyberrevolutionsummit.com/india/
+  is_paid: true
+  organizer_name: TRAICON EVENTS
+  organizer_email: alfin@traiconevents.com
+  tags:
+  - Threat Intelligence
+  - Cloud Security
+  - Cyber Resilience
 - name: IDC IT Security Summit 2026, India
   description: IDC summit on security sovereignty, AI, and resilience for enterprise
     and security leaders.
@@ -639,3 +729,59 @@ events:
   - Hacker
   - Training
   - CTF
+- name: Cyber First India 2026 - Delhi Edition
+  description: India's premier invite-only cybersecurity summit bringing together
+    350+ CISOs, government cyber leaders, and enterprise security executives for one
+    focused day of practitioner-led sessions on AI threats, DPDP compliance, critical
+    infrastructure, and national cyber resilience.
+  start_date: '2026-10-10'
+  end_date: '2026-10-10'
+  location: The Lalit Ashok, Chanakyapuri
+  city: Delhi
+  category: Conference
+  event_type: offline
+  website_url: https://www.eventsfirstgroup.com/events/cyber-first/india-2026
+  is_paid: false
+  organizer_name: Events First Group
+  organizer_email: harini@eventsfirstgroup.com
+  tags:
+  - Leadership
+  - CISO
+  - AI Security
+  - Enterprise Security
+  - Cyber Resilience
+- name: SANS Cloud Security South Asia 2026
+  description: Unparalleled virtual learning experience delivered by world-renowned
+    cybersecurity instructors focused on cloud security and penetration testing. Courses
+    priced individually in USD starting at $8,375.
+  start_date: '2026-11-23'
+  end_date: '2026-11-28'
+  location: Online
+  city: Online
+  category: Conference
+  event_type: online
+  website_url: https://www.sans.org/cyber-security-training-events/cloud-security-south-asia-2026
+  is_paid: true
+  organizer_name: SANS Institute
+  organizer_email: india@sans.org
+  tags:
+  - Cloud Security
+  - Penetration Testing
+  - Training
+- name: Global CyberPeace Summit 3.0
+  description: Shaping global digital cooperation through AI-powered cybersecurity
+    leadership, international diplomacy, and collaborative frameworks.
+  start_date: '2027-02-07'
+  end_date: '2027-02-09'
+  location: Manekshaw Center Auditorium
+  city: Delhi
+  category: Conference
+  event_type: offline
+  website_url: https://www.cyberpeacesummit.com
+  is_paid: true
+  organizer_name: CyberPeace
+  organizer_email: summit@cyberpeace.net
+  tags:
+  - Diplomacy
+  - Ethical AI
+  - Leadership
